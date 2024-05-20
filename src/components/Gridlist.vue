@@ -33,6 +33,7 @@ const props = defineProps<IBoard>();
 
   div {
     border: solid white 1px;
+    cursor: pointer;
   }
 }
 </style>

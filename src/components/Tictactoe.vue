@@ -12,10 +12,14 @@ const boardState = ref<IBoard>({
 const playerX = ref<string>("");
 const playerO = ref<string>("");
 
-const playerXState = ref<Player>(new Player(true, false));
-const playerOState = ref<Player>(new Player(false, true));
+const playerXState = ref<Player>(
+  new Player(true, false, Math.floor(Math.random() * 2) + 1)
+);
+const playerOState = ref<Player>(
+  new Player(false, true, Math.floor(Math.random() * 2) + 1)
+);
 
-const currentPlayer = ref();
+const currentPlayer = ref<Player>();
 
 const playerCount = ref<number>(0);
 
@@ -26,11 +30,19 @@ const addPlayers = (playerName: string) => {
 
     currentPlayer.value = playerXState.value;
     console.log(currentPlayer.value);
+    console.log(currentPlayer.value.start);
+
+    if (currentPlayer.value.start === 1) {
+      console.log("Player X starts");
+    } else {
+      console.log("Player O starts");
+    }
   } else if (playerCount.value === 2) {
     playerO.value = playerName;
 
     currentPlayer.value = playerOState.value;
     console.log(currentPlayer.value);
+    console.log(currentPlayer.value.start);
   }
 };
 
