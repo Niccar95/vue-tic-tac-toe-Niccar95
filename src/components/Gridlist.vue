@@ -1,24 +1,25 @@
 <script setup lang="ts">
 import { IGrid } from "../models/IGrid";
+import Grid from "./Grid.vue";
 
 interface IBoard {
   gridList: IGrid[];
 }
 
-const emit = defineEmits<{
+defineProps<IBoard>();
+
+defineEmits<{
   (e: "handleGrid", id: number): void;
 }>();
-
-const props = defineProps<IBoard>();
 </script>
 <template>
   <div id="board">
-    <div
-      :class="grid"
-      v-for="(grid, index) in (props.gridList, 9)"
+    <Grid
+      v-for="(grid, index) in 9"
       :key="index"
-      @click="emit('handleGrid', index)"
-    ></div>
+      :id="index"
+      @handleGrid="(id: number) => { $emit('handleGrid', id) }"
+    ></Grid>
   </div>
 </template>
 <style scoped>
