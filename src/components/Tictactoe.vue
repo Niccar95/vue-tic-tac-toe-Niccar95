@@ -40,7 +40,7 @@ const gridClick = (id: number) => {
 </script>
 
 <template>
-  <Players @addPlayer="addPlayers"></Players>
+  <Players v-if="playerCount < 2" @addPlayer="addPlayers"></Players>
   <div>
     <p>Player X: {{ playerX }}</p>
     <p>Player O: {{ playerO }}</p>
