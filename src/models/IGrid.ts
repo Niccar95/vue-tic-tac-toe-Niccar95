@@ -1,5 +1,6 @@
+import { Player } from "./Player";
+
 export interface IGrid {
-  index: number;
-  playerX: string;
-  playerO: string;
+  checked: boolean;
+  player: Player;
 }
