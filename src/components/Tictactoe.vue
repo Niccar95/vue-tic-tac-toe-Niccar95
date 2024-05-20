@@ -9,6 +9,17 @@ const boardState = ref<IBoard>({
   gridList: [],
 });
 
+const initializeGridList = () => {
+  for (let i = 0; i < 9; i++) {
+    boardState.value.gridList.push({
+      id: i,
+      symbol: "",
+    });
+  }
+};
+
+initializeGridList();
+
 const playerXState = ref<Player>(
   new Player("", true, false, Math.floor(Math.random() * 2) + 1)
 );
@@ -37,12 +48,21 @@ const addPlayers = (playerName: string) => {
 
 let countState = ref<number>(0);
 
-const gridClick = (index: number) => {
-  console.log(index);
-  countState.value++;
-  if (countState.value % 2 === 1) {
-    console.log(playerXState.value.x);
+const gridClick = (id: number, symbol: string) => {
+  const gridItem = boardState.value.gridList.find((item) => item.id === id);
+  console.log(id);
+  console.log(boardState.value.gridList);
+  if (gridItem) {
+    countState.value++;
+    if (countState.value % 2 === 1) {
+      symbol = "X";
+    } else {
+      symbol = "O";
+    }
   }
+
+  boardState.value.gridList[id].symbol = symbol;
+  console.log(boardState.value.gridList);
 };
 </script>
 

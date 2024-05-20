@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
 import { IGrid } from "../models/IGrid";
+
 import Grid from "./Grid.vue";
 
 interface IBoard {
@@ -9,16 +11,17 @@ interface IBoard {
 defineProps<IBoard>();
 
 defineEmits<{
-  (e: "handleGrid", id: number): void;
+  (e: "handleGrid", id: number, symbol: string): void;
 }>();
 </script>
 <template>
   <div id="board">
     <Grid
-      v-for="(grid, index) in 9"
-      :key="index"
-      :id="index"
-      @handleGrid="(id: number) => { $emit('handleGrid', id) }"
+      v-for="grid in gridList"
+      :key="grid.id"
+      :id="grid.id"
+      :symbol="grid.symbol"
+      @handleGrid="(id: number, symbol: string) => { $emit('handleGrid', id, symbol) }"
     ></Grid>
   </div>
 </template>
