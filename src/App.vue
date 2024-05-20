@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Tictactoe from "./components/Tictactoe.vue";
+</script>
 
-<template></template>
+<template>
+  <Tictactoe></Tictactoe>
+</template>
 
 <style scoped></style>
