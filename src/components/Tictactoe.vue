@@ -54,10 +54,19 @@ const gridClick = (id: number, symbol: string) => {
   console.log(boardState.value.gridList);
   if (gridItem) {
     countState.value++;
-    if (countState.value % 2 === 1) {
-      symbol = "X";
+
+    if (playerXState.value.start === 1) {
+      if (countState.value % 2 === 1) {
+        symbol = "X";
+      } else {
+        symbol = "O";
+      }
     } else {
-      symbol = "O";
+      if (countState.value % 2 === 1) {
+        symbol = "O";
+      } else {
+        symbol = "X";
+      }
     }
   }
 

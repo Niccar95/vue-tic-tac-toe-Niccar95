@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
 import { IGrid } from "../models/IGrid";
 
 import Grid from "./Grid.vue";
@@ -8,7 +7,7 @@ interface IBoard {
   gridList: IGrid[];
 }
 
-defineProps<IBoard>();
+const props = defineProps<IBoard>();
 
 defineEmits<{
   (e: "handleGrid", id: number, symbol: string): void;
@@ -17,7 +16,7 @@ defineEmits<{
 <template>
   <div id="board">
     <Grid
-      v-for="grid in gridList"
+      v-for="grid in props.gridList"
       :key="grid.id"
       :id="grid.id"
       :symbol="grid.symbol"
