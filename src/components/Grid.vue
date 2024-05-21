@@ -6,16 +6,17 @@ import { Player } from "../models/Player";
 interface IGrid {
   id: number;
   symbol: string;
+  checked: boolean;
 }
 
 const props = defineProps<IGrid>();
 
 const emit = defineEmits<{
-  (e: "handleGrid", id: number, symbol: string): void;
+  (e: "handleGrid", id: number, symbol: string, checked: boolean): void;
 }>();
 
 const handleGrid = () => {
-  emit("handleGrid", props.id, props.symbol);
+  emit("handleGrid", props.id, props.symbol, props.checked);
 };
 </script>
 <template>

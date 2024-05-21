@@ -20,6 +20,7 @@ defineEmits<{
       :key="grid.id"
       :id="grid.id"
       :symbol="grid.symbol"
+      :checked="grid.checked"
       @handleGrid="(id: number, symbol: string) => { $emit('handleGrid', id, symbol) }"
     ></Grid>
   </div>

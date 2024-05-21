@@ -14,6 +14,7 @@ const initializeGridList = () => {
     boardState.value.gridList.push({
       id: i,
       symbol: "",
+      checked: false,
     });
   }
 };
@@ -52,6 +53,11 @@ const gridClick = (id: number, symbol: string) => {
   const gridItem = boardState.value.gridList.find((item) => item.id === id);
   console.log(id);
   console.log(boardState.value.gridList);
+
+  if (boardState.value.gridList[id].checked === true) {
+    return;
+  }
+
   if (gridItem) {
     countState.value++;
 
@@ -71,8 +77,11 @@ const gridClick = (id: number, symbol: string) => {
   }
 
   boardState.value.gridList[id].symbol = symbol;
+  boardState.value.gridList[id].checked = true;
   console.log(boardState.value.gridList);
 };
+
+const resetButton = ref<boolean>(false);
 </script>
 
 <template>
@@ -95,6 +104,10 @@ const gridClick = (id: number, symbol: string) => {
       :gridList="boardState.gridList"
       @handleGrid="gridClick"
     ></Gridlist>
+
+    <div v-if="boardState.gridList.every((item) => item.checked)">
+      <button :showButton="resetButton">Restart game</button>
+    </div>
   </div>
 </template>
 
