@@ -54,9 +54,14 @@ let winningPlayer = ref<string>("");
 
 const checkForWinner = (winnerSymbol: string) => {
   if (!winner.value) {
-    console.log("player " + winnerSymbol + " won");
+    if (playerXState.value.x && winnerSymbol === "X") {
+      winningPlayer.value = playerXState.value.name + " won!";
+      console.log(winningPlayer.value);
+    } else {
+      winningPlayer.value = playerOState.value.name + " won!";
+      console.log(winningPlayer.value);
+    }
     winner.value = true;
-    winningPlayer.value = "player " + winnerSymbol + " won";
   }
 };
 
