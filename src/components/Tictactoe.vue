@@ -49,6 +49,17 @@ const addPlayers = (playerName: string) => {
 
 let countState = ref<number>(0);
 
+let winner = ref<boolean>(false);
+let winningPlayer = ref<string>("");
+
+const checkForWinner = (winnerSymbol: string) => {
+  if (!winner.value) {
+    console.log("player " + winnerSymbol + " won");
+    winner.value = true;
+    winningPlayer.value = "player " + winnerSymbol + " won";
+  }
+};
+
 const gridClick = (id: number, symbol: string) => {
   const gridItem = boardState.value.gridList.find((item) => item.id === id);
   console.log(id);
@@ -103,9 +114,16 @@ const resetButton = ref<boolean>(false);
     <Gridlist
       :gridList="boardState.gridList"
       @handleGrid="gridClick"
+      @handleWinner="checkForWinner"
     ></Gridlist>
 
-    <div v-if="boardState.gridList.every((item) => item.checked)">
+    <div v-if="boardState.gridList.every((item) => item.checked) && !winner">
+      <p>No player won</p>
+      <button :showButton="resetButton">Restart game</button>
+    </div>
+
+    <div v-else>
+      <p>{{ winningPlayer }}</p>
       <button :showButton="resetButton">Restart game</button>
     </div>
   </div>

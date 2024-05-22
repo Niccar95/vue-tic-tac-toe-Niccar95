@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { Player } from "../models/Player";
-
-//import { Player } from "../models/Player";
-
 interface IGrid {
   id: number;
   symbol: string;
