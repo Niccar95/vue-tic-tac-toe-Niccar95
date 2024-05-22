@@ -28,15 +28,15 @@ const winPatterns: number[][] = [
 const checkForWin = (): boolean => {
   for (const pattern of winPatterns) {
     const [first, second, third] = pattern;
-    const box1 = props.gridList[first];
-    const box2 = props.gridList[second];
-    const box3 = props.gridList[third];
+    const grid1 = props.gridList[first];
+    const grid2 = props.gridList[second];
+    const grid3 = props.gridList[third];
 
     if (
-      (box1.symbol === "X" && box2.symbol === "X" && box3.symbol === "X") ||
-      (box1.symbol === "O" && box2.symbol === "O" && box3.symbol === "O")
+      (grid1.symbol === "X" && grid2.symbol === "X" && grid3.symbol === "X") ||
+      (grid1.symbol === "O" && grid2.symbol === "O" && grid3.symbol === "O")
     ) {
-      emit("handleWinner", box1.symbol);
+      emit("handleWinner", grid1.symbol);
       return true;
     }
   }

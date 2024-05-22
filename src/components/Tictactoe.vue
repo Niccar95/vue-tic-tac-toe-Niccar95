@@ -51,6 +51,7 @@ let countState = ref<number>(0);
 
 let winner = ref<boolean>(false);
 let winningPlayer = ref<string>("");
+let index = ref(0);
 
 const checkForWinner = (winnerSymbol: string) => {
   if (!winner.value) {
@@ -70,7 +71,7 @@ const gridClick = (id: number, symbol: string) => {
   console.log(id);
   console.log(boardState.value.gridList);
 
-  if (boardState.value.gridList[id].checked === true) {
+  if (boardState.value.gridList[id].checked === true || winner.value === true) {
     return;
   }
 
