@@ -33,10 +33,17 @@ const checkForWin = (): boolean => {
     const grid3 = props.gridList[third];
 
     if (
-      (grid1.symbol === "X" && grid2.symbol === "X" && grid3.symbol === "X") ||
-      (grid1.symbol === "O" && grid2.symbol === "O" && grid3.symbol === "O")
+      (grid1.symbol === "/src/assets/x-solid.svg" &&
+        grid2.symbol === "/src/assets/x-solid.svg" &&
+        grid3.symbol === "/src/assets/x-solid.svg") ||
+      (grid1.symbol === "/src/assets/o-solid.svg" &&
+        grid2.symbol === "/src/assets/o-solid.svg" &&
+        grid3.symbol === "/src/assets/o-solid.svg")
     ) {
-      emit("handleWinner", grid1.symbol);
+      emit(
+        "handleWinner",
+        grid1.symbol === "/src/assets/x-solid.svg" ? "X" : "O"
+      );
       return true;
     }
   }
@@ -62,14 +69,23 @@ const checkForWin = (): boolean => {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 5px;
-  border: solid black 1px;
   height: 500px;
   width: 500px;
-  padding: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom right, #dd5746, #ffffff, #dd5746);
 
   div {
-    border: solid black 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background-color: white;
+  }
+
+  div:hover {
+    background-color: rgb(236, 236, 236);
   }
 }
 </style>

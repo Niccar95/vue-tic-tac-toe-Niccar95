@@ -16,6 +16,8 @@ const handleGrid = () => {
 };
 </script>
 <template>
-  <div @click="handleGrid">{{ props.symbol }}</div>
+  <div @click="handleGrid">
+    <img v-if="props.symbol" :src="props.symbol" alt="symbol" />
+  </div>
 </template>
 <style scoped></style>

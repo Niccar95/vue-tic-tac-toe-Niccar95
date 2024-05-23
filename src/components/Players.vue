@@ -24,4 +24,22 @@ const handleSubmit = () => {
   </form>
 </template>
 
-<style scoped></style>
+<style scoped>
+form {
+  padding: 2em;
+
+  input {
+    width: 250px;
+    border: none;
+    padding: 1em;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  input:focus {
+    border-color: crimson;
+    box-shadow: 0 0 5px rgba(220, 20, 60, 0.5);
+    outline: none;
+  }
+}
+</style>

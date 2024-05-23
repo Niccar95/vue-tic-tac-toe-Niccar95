@@ -80,15 +80,15 @@ const gridClick = (id: number, symbol: string) => {
 
     if (playerXState.value.start === 1) {
       if (countState.value % 2 === 1) {
-        symbol = "X";
+        symbol = "/src/assets/x-solid.svg";
       } else {
-        symbol = "O";
+        symbol = "/src/assets/o-solid.svg";
       }
     } else {
       if (countState.value % 2 === 1) {
-        symbol = "O";
+        symbol = "/src/assets/o-solid.svg";
       } else {
-        symbol = "X";
+        symbol = "/src/assets/x-solid.svg";
       }
     }
   }
@@ -114,10 +114,16 @@ const restartGame = () => {
 </script>
 
 <template>
-  <Players v-if="playerCount < 2" @addPlayer="addPlayers"></Players>
-  <div class="nameContainer">
-    <p>Player X: {{ playerXState.name }}</p>
-    <p>Player O: {{ playerOState.name }}</p>
+  <header>
+    <h1>Tic Tac Toe</h1>
+  </header>
+
+  <section id="nameContainer">
+    <Players v-if="playerCount < 2" @addPlayer="addPlayers"></Players>
+    <section id="nameDisplay">
+      <p>Player <b>X</b> : {{ playerXState.name }}</p>
+      <p>Player <b>O</b> : {{ playerOState.name }}</p>
+    </section>
 
     <section v-if="playerCount === 2">
       <p v-if="playerXState.start === 1">
@@ -127,42 +133,67 @@ const restartGame = () => {
         {{ playerOState.name + " " + "starts!" }}
       </p>
     </section>
-  </div>
-  <div class="boardContainer" v-if="playerCount === 2">
+  </section>
+
+  <section class="boardContainer" v-if="playerCount === 2">
     <Gridlist
       :gridList="boardState.gridList"
       @handleGrid="gridClick"
       @handleWinner="checkForWinner"
     ></Gridlist>
 
-    <div v-if="boardState.gridList.every((item) => item.checked) && !winner">
+    <section
+      v-if="boardState.gridList.every((item) => item.checked) && !winner"
+    >
       <p>No player won</p>
       <Clearboard
         :gridList="boardState.gridList"
         @handleRestart="restartGame"
       ></Clearboard>
-    </div>
+    </section>
 
-    <div v-else-if="winner">
+    <section v-else-if="winner">
       <p>{{ winningPlayer }}</p>
       <Clearboard
         :gridList="boardState.gridList"
         @handleRestart="restartGame"
       ></Clearboard>
-    </div>
-  </div>
+    </section>
+  </section>
 </template>
 
 <style scoped>
-.nameContainer {
-  border: solid black 1px;
+header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30%;
+  height: 80px;
+  border-bottom: solid black 1px;
 }
+
+#nameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 80px;
+  width: 50%;
+  height: 80px;
+
+  #nameDisplay {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+  }
+}
+
 .boardContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  border: solid black 1px;
+  padding: 1em;
   width: 100%;
   height: 100%;
 }
