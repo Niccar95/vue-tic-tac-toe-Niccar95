@@ -48,8 +48,6 @@ const addPlayers = (playerName: string) => {
   }
 };
 
-let countState = ref<number>(0);
-
 let winner = ref<boolean>(false);
 let winningPlayer = ref<string>("");
 
@@ -65,6 +63,8 @@ const checkForWinner = (winnerSymbol: string) => {
     winner.value = true;
   }
 };
+
+let countState = ref<number>(0);
 
 const gridClick = (id: number, symbol: string) => {
   const gridItem = boardState.value.gridList.find((item) => item.id === id);
@@ -104,6 +104,12 @@ const restartGame = () => {
     grid.symbol = "";
     grid.checked = false;
   });
+
+  winningPlayer.value = "";
+  winner.value = false;
+  countState.value = 0;
+
+  playerXState.value.start = Math.random() < 0.5 ? 1 : 2;
 };
 </script>
 
@@ -137,7 +143,7 @@ const restartGame = () => {
       ></Clearboard>
     </div>
 
-    <div v-else>
+    <div v-else-if="winner">
       <p>{{ winningPlayer }}</p>
       <Clearboard
         :gridList="boardState.gridList"
