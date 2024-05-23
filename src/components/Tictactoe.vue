@@ -100,9 +100,9 @@ const gridClick = (id: number, symbol: string) => {
 
 const restartGame = () => {
   console.log("restart game");
-  boardState.value.gridList.forEach((item) => {
-    item.symbol = "";
-    item.checked = false;
+  boardState.value.gridList.forEach((grid) => {
+    grid.symbol = "";
+    grid.checked = false;
   });
 };
 </script>
