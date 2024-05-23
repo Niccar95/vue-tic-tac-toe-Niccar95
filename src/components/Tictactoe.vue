@@ -4,12 +4,13 @@ import Players from "./Players.vue";
 import { IBoard } from "../models/IBoard";
 import Gridlist from "./Gridlist.vue";
 import { Player } from "../models/Player";
+import Clearboard from "./Clearboard.vue";
 
 const boardState = ref<IBoard>({
   gridList: [],
 });
 
-const initializeGridList = () => {
+const initialGridList = () => {
   for (let i = 0; i < 9; i++) {
     boardState.value.gridList.push({
       id: i,
@@ -19,7 +20,7 @@ const initializeGridList = () => {
   }
 };
 
-initializeGridList();
+initialGridList();
 
 const playerXState = ref<Player>(
   new Player("", true, false, Math.floor(Math.random() * 2) + 1)
@@ -51,7 +52,6 @@ let countState = ref<number>(0);
 
 let winner = ref<boolean>(false);
 let winningPlayer = ref<string>("");
-let index = ref(0);
 
 const checkForWinner = (winnerSymbol: string) => {
   if (!winner.value) {
@@ -98,7 +98,13 @@ const gridClick = (id: number, symbol: string) => {
   console.log(boardState.value.gridList);
 };
 
-const resetButton = ref<boolean>(false);
+const restartGame = () => {
+  console.log("restart game");
+  boardState.value.gridList.forEach((item) => {
+    item.symbol = "";
+    item.checked = false;
+  });
+};
 </script>
 
 <template>
@@ -125,12 +131,18 @@ const resetButton = ref<boolean>(false);
 
     <div v-if="boardState.gridList.every((item) => item.checked) && !winner">
       <p>No player won</p>
-      <button :showButton="resetButton">Restart game</button>
+      <Clearboard
+        :gridList="boardState.gridList"
+        @handleRestart="restartGame"
+      ></Clearboard>
     </div>
 
     <div v-else>
       <p>{{ winningPlayer }}</p>
-      <button :showButton="resetButton">Restart game</button>
+      <Clearboard
+        :gridList="boardState.gridList"
+        @handleRestart="restartGame"
+      ></Clearboard>
     </div>
   </div>
 </template>
