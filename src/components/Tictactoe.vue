@@ -115,7 +115,7 @@ const restartGame = () => {
 
 <template>
   <Players v-if="playerCount < 2" @addPlayer="addPlayers"></Players>
-  <div>
+  <div class="nameContainer">
     <p>Player X: {{ playerXState.name }}</p>
     <p>Player O: {{ playerOState.name }}</p>
 
@@ -128,7 +128,7 @@ const restartGame = () => {
       </p>
     </section>
   </div>
-  <div v-if="playerCount === 2">
+  <div class="boardContainer" v-if="playerCount === 2">
     <Gridlist
       :gridList="boardState.gridList"
       @handleGrid="gridClick"
@@ -153,4 +153,17 @@ const restartGame = () => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.nameContainer {
+  border: solid black 1px;
+  width: 30%;
+}
+.boardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid black 1px;
+  width: 100%;
+  height: 100%;
+}
+</style>

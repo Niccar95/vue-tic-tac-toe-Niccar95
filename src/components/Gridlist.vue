@@ -62,12 +62,13 @@ const checkForWin = (): boolean => {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 5px;
-  border: solid white 1px;
-  height: 400px;
-  width: 400px;
+  border: solid black 1px;
+  height: 500px;
+  width: 500px;
+  padding: 5px;
 
   div {
-    border: solid white 1px;
+    border: solid black 1px;
     cursor: pointer;
   }
 }
