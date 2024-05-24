@@ -54,7 +54,7 @@ const checkForWin = (): boolean => {
 <template>
   <div id="board">
     <Grid
-      v-for="grid in gridList"
+      v-for="grid in props.gridList"
       :key="grid.id"
       :id="grid.id"
       :symbol="grid.symbol"

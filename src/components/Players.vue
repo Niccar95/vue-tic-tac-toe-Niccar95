@@ -19,7 +19,13 @@ const handleSubmit = () => {
 
 <template>
   <form @submit.prevent="handleSubmit">
-    <input placeholder="Type player name" type="text" v-model="userInput" />
+    <input
+      autofocus
+      placeholder="Type player name"
+      type="text"
+      maxlength="15"
+      v-model="userInput"
+    />
     <button>Add player</button>
   </form>
 </template>

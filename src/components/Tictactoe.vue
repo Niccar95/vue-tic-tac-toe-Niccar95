@@ -35,7 +35,7 @@ const addPlayers = (playerName: string) => {
   playerCount.value++;
   if (playerCount.value === 1) {
     playerXState.value.name = playerName;
-    console.log(playerXState.value);
+    console.log(playerXState.value.start);
 
     if (playerXState.value.start === 1) {
       console.log("Player X starts");
@@ -44,7 +44,15 @@ const addPlayers = (playerName: string) => {
     }
   } else if (playerCount.value === 2) {
     playerOState.value.name = playerName;
-    console.log(playerOState.value);
+    console.log(playerOState.value.start);
+
+    while (true) {
+      playerOState.value.start = Math.floor(Math.random() * 2) + 1; //
+      if (playerOState.value.start !== playerXState.value.start) {
+        break;
+      }
+    }
+    console.log(playerOState.value.start);
   }
 };
 
