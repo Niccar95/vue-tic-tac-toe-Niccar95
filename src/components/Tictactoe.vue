@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import Players from "./Players.vue";
 import { IBoard } from "../models/IBoard";
 import Gridlist from "./Gridlist.vue";
 import { Player } from "../models/Player";
 import Clearboard from "./Clearboard.vue";
+import Playerform from "./Playerform.vue";
 
 const boardState = ref<IBoard>({
   gridList: [],
@@ -120,7 +120,7 @@ const restartGame = () => {
   </header>
 
   <section id="nameContainer">
-    <Players v-if="playerCount < 2" @addPlayer="addPlayers"></Players>
+    <Playerform v-if="playerCount < 2" @addPlayer="addPlayers"></Playerform>
     <section id="nameDisplay">
       <p class="playerX">Player <b>X</b> : {{ playerXState.name }}</p>
       <p class="playerO">Player <b>O</b> : {{ playerOState.name }}</p>
