@@ -35,16 +35,8 @@ const addPlayers = (playerName: string) => {
   playerCount.value++;
   if (playerCount.value === 1) {
     playerXState.value.name = playerName;
-    console.log(playerXState.value.start);
-
-    if (playerXState.value.start === 1) {
-      console.log("Player X starts");
-    } else {
-      console.log("Player O starts");
-    }
   } else if (playerCount.value === 2) {
     playerOState.value.name = playerName;
-    console.log(playerOState.value.start);
 
     while (true) {
       playerOState.value.start = Math.floor(Math.random() * 2) + 1; //
@@ -52,7 +44,6 @@ const addPlayers = (playerName: string) => {
         break;
       }
     }
-    console.log(playerOState.value.start);
   }
 };
 
@@ -63,10 +54,8 @@ const checkForWinner = (winnerSymbol: string) => {
   if (!winner.value) {
     if (playerXState.value.x && winnerSymbol === "X") {
       winningPlayer.value = playerXState.value.name + " won!";
-      console.log(winningPlayer.value);
     } else {
       winningPlayer.value = playerOState.value.name + " won!";
-      console.log(winningPlayer.value);
     }
     winner.value = true;
   }
@@ -76,8 +65,6 @@ let countState = ref<number>(0);
 
 const gridClick = (id: number, symbol: string) => {
   const gridItem = boardState.value.gridList.find((item) => item.id === id);
-  console.log(id);
-  console.log(boardState.value.gridList);
 
   if (boardState.value.gridList[id].checked === true || winner.value === true) {
     return;
@@ -103,7 +90,6 @@ const gridClick = (id: number, symbol: string) => {
 
   boardState.value.gridList[id].symbol = symbol;
   boardState.value.gridList[id].checked = true;
-  console.log(boardState.value.gridList);
 };
 
 const restartGame = () => {
@@ -117,15 +103,14 @@ const restartGame = () => {
   winner.value = false;
   countState.value = 0;
 
+  playerXState.value.start = Math.random() < 0.5 ? 1 : 2;
+
   while (true) {
     playerOState.value.start = Math.floor(Math.random() * 2) + 1;
     if (playerOState.value.start !== playerXState.value.start) {
       break;
     }
   }
-
-  console.log(playerXState.value.start);
-  console.log(playerOState.value.start);
 };
 </script>
 
