@@ -121,17 +121,25 @@ const restartGame = () => {
   <section id="nameContainer">
     <Players v-if="playerCount < 2" @addPlayer="addPlayers"></Players>
     <section id="nameDisplay">
-      <p>Player <b>X</b> : {{ playerXState.name }}</p>
-      <p>Player <b>O</b> : {{ playerOState.name }}</p>
+      <p class="playerX">Player <b>X</b> : {{ playerXState.name }}</p>
+      <p class="playerO">Player <b>O</b> : {{ playerOState.name }}</p>
     </section>
 
     <section v-if="playerCount === 2">
-      <p v-if="playerXState.start === 1">
+      <h2 v-if="winner">
+        {{ winningPlayer }}
+      </h2>
+      <h2
+        v-else-if="!winner && boardState.gridList.every((item) => item.checked)"
+      >
+        No player won
+      </h2>
+      <h2 v-else-if="playerXState.start === 1">
         {{ playerXState.name + " " + "starts!" }}
-      </p>
-      <p v-else="playerOState.start === 1">
+      </h2>
+      <h2 v-else-if="playerOState.start === 1">
         {{ playerOState.name + " " + "starts!" }}
-      </p>
+      </h2>
     </section>
   </section>
 
@@ -143,17 +151,16 @@ const restartGame = () => {
     ></Gridlist>
 
     <section
+      class="restartSection"
       v-if="boardState.gridList.every((item) => item.checked) && !winner"
     >
-      <p>No player won</p>
       <Clearboard
         :gridList="boardState.gridList"
         @handleRestart="restartGame"
       ></Clearboard>
     </section>
 
-    <section v-else-if="winner">
-      <p>{{ winningPlayer }}</p>
+    <section class="restartSection" v-else-if="winner">
       <Clearboard
         :gridList="boardState.gridList"
         @handleRestart="restartGame"
@@ -177,15 +184,23 @@ header {
 #nameContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   margin-top: 80px;
   width: 50%;
-  height: 80px;
 
   #nameDisplay {
-    display: flex;
-    justify-content: center;
-    gap: 120px;
+    position: relative;
+    width: 100%;
+    height: 30px;
+
+    .playerX {
+      position: absolute;
+      left: 150px;
+    }
+
+    .playerO {
+      position: absolute;
+      right: 150px;
+    }
   }
 }
 
@@ -196,5 +211,9 @@ header {
   padding: 1em;
   width: 100%;
   height: 100%;
+}
+
+.restartSection {
+  padding: 1em;
 }
 </style>

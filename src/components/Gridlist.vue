@@ -82,10 +82,17 @@ const checkForWin = (): boolean => {
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     background-color: white;
+    transition: transform 0.2s ease-in-out;
   }
 
   div:hover {
-    background-color: rgb(236, 236, 236);
+    background: linear-gradient(
+      to bottom right,
+      rgb(235, 235, 235),
+      white,
+      rgb(235, 235, 235)
+    );
+    transform: scale(97%);
   }
 }
 </style>

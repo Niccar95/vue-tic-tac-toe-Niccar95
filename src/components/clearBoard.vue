@@ -25,20 +25,7 @@ const restartButton = ref<boolean>(false);
 </template>
 <style scoped>
 #restartButton {
-  border: solid black;
-  padding: 1em;
-  font-weight: 500;
-  background-color: #1a1a1a;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  color: white;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: crimson;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  width: 200px;
+  padding: 1.2em;
 }
 </style>

@@ -19,8 +19,8 @@ const handleSubmit = () => {
 
 <template>
   <form @submit.prevent="handleSubmit">
-    <input type="text" v-model="userInput" />
-    <button>Add player name</button>
+    <input placeholder="Type player name" type="text" v-model="userInput" />
+    <button>Add player</button>
   </form>
 </template>
 
@@ -29,9 +29,9 @@ form {
   padding: 2em;
 
   input {
-    width: 250px;
     border: none;
-    padding: 1em;
+    width: 250px;
+    padding: 1.2em;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     transition: border-color 0.3s, box-shadow 0.3s;
   }
