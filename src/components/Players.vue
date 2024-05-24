@@ -3,6 +3,8 @@ import { ref } from "vue";
 
 const userInput = ref<string>("");
 
+let countInputs = ref<number>(0);
+
 const emit = defineEmits<{
   (e: "addPlayer", text: string): void;
 }>();
@@ -11,9 +13,9 @@ const handleSubmit = () => {
   if (userInput.value !== "") {
     emit("addPlayer", userInput.value);
     userInput.value = "";
-  }
 
-  console.log(userInput.value);
+    countInputs.value++;
+  }
 };
 </script>
 
@@ -26,7 +28,8 @@ const handleSubmit = () => {
       maxlength="15"
       v-model="userInput"
     />
-    <button>Add player</button>
+    <button v-if="countInputs === 0">Add player X</button>
+    <button v-if="countInputs >= 1">Add player O</button>
   </form>
 </template>
 
