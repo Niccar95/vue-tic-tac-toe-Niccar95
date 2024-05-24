@@ -140,7 +140,7 @@ const restartGame = () => {
       <h2
         v-else-if="!winner && boardState.gridList.every((item) => item.checked)"
       >
-        No player won
+        It's a tie!
       </h2>
       <h2 v-else-if="playerXState.start === 1">
         {{ playerXState.name + " " + "starts!" }}
