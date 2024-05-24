@@ -117,10 +117,11 @@ const restartGame = () => {
   winner.value = false;
   countState.value = 0;
 
-  playerXState.value.start = Math.random() < 0.5 ? 1 : 2;
-
-  while (playerOState.value.start === playerXState.value.start) {
+  while (true) {
     playerOState.value.start = Math.floor(Math.random() * 2) + 1;
+    if (playerOState.value.start !== playerXState.value.start) {
+      break;
+    }
   }
 
   console.log(playerXState.value.start);
