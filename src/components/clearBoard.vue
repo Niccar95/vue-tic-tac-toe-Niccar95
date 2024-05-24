@@ -20,7 +20,7 @@ const restartButton = ref<boolean>(false);
 </script>
 <template>
   <button id="restartButton" :showButton="restartButton" @click="handleRestart">
-    Restart game
+    New game
   </button>
 </template>
 <style scoped>
