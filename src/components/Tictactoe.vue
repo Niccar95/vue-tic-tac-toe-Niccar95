@@ -50,12 +50,17 @@ const addPlayers = (playerName: string) => {
 let winner = ref<boolean>(false);
 let winningPlayer = ref<string>("");
 
+let Xscore = ref<number>(0);
+let Yscore = ref<number>(0);
+
 const checkForWinner = (winnerSymbol: string) => {
   if (!winner.value) {
     if (playerXState.value.x && winnerSymbol === "X") {
       winningPlayer.value = playerXState.value.name + " won!";
+      Xscore.value++;
     } else {
       winningPlayer.value = playerOState.value.name + " won!";
+      Yscore.value++;
     }
     winner.value = true;
   }
@@ -124,6 +129,9 @@ const restartGame = () => {
     <section id="nameDisplay">
       <p class="playerX">Player <b>X</b> : {{ playerXState.name }}</p>
       <p class="playerO">Player <b>O</b> : {{ playerOState.name }}</p>
+    </section>
+    <section>
+      {{ Yscore }}
     </section>
 
     <section v-if="playerCount === 2">
