@@ -149,8 +149,14 @@ const restartGame = () => {
     </section>
 
     <section class="scoreSection">
-      <p>{{ playerXState.score }}</p>
-      <p>{{ playerOState.score }}</p>
+      <b>
+        <p>{{ playerXState.score }}</p>
+      </b>
+      <p>Score</p>
+
+      <b>
+        <p>{{ playerOState.score }}</p>
+      </b>
     </section>
   </section>
 
@@ -218,9 +224,9 @@ header {
 
   .scoreSection {
     width: 60%;
-    border: solid black 1px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    border: solid black 1px;
   }
 }
 
