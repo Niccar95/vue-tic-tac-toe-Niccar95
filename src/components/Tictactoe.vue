@@ -23,10 +23,10 @@ const initialGridList = () => {
 initialGridList();
 
 const playerXState = ref<Player>(
-  new Player("", true, false, Math.floor(Math.random() * 2) + 1)
+  new Player("", true, false, Math.floor(Math.random() * 2) + 1, 0)
 );
 const playerOState = ref<Player>(
-  new Player("", false, true, Math.floor(Math.random() * 2) + 1)
+  new Player("", false, true, Math.floor(Math.random() * 2) + 1, 0)
 );
 
 const playerCount = ref<number>(0);
@@ -50,17 +50,17 @@ const addPlayers = (playerName: string) => {
 let winner = ref<boolean>(false);
 let winningPlayer = ref<string>("");
 
-let Xscore = ref<number>(0);
-let Yscore = ref<number>(0);
+//let Xscore = ref<number>(0);
+//let Yscore = ref<number>(0);
 
 const checkForWinner = (winnerSymbol: string) => {
   if (!winner.value) {
     if (playerXState.value.x && winnerSymbol === "X") {
       winningPlayer.value = playerXState.value.name + " won!";
-      Xscore.value++;
+      playerXState.value.score++;
     } else {
       winningPlayer.value = playerOState.value.name + " won!";
-      Yscore.value++;
+      playerOState.value.score++;
     }
     winner.value = true;
   }
@@ -130,9 +130,6 @@ const restartGame = () => {
       <p class="playerX">Player <b>X</b> : {{ playerXState.name }}</p>
       <p class="playerO">Player <b>O</b> : {{ playerOState.name }}</p>
     </section>
-    <section>
-      {{ Yscore }}
-    </section>
 
     <section v-if="playerCount === 2">
       <h2 v-if="winner">
@@ -149,6 +146,11 @@ const restartGame = () => {
       <h2 v-else-if="playerOState.start === 1">
         {{ playerOState.name + " " + "starts!" }}
       </h2>
+    </section>
+
+    <section class="scoreSection">
+      <p>{{ playerXState.score }}</p>
+      <p>{{ playerOState.score }}</p>
     </section>
   </section>
 
@@ -193,6 +195,8 @@ header {
 #nameContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
   margin-top: 80px;
   width: 50%;
 
@@ -210,6 +214,13 @@ header {
       position: absolute;
       right: 150px;
     }
+  }
+
+  .scoreSection {
+    width: 60%;
+    border: solid black 1px;
+    display: flex;
+    justify-content: space-between;
   }
 }
 
