@@ -50,9 +50,6 @@ const addPlayers = (playerName: string) => {
 let winner = ref<boolean>(false);
 let winningPlayer = ref<string>("");
 
-//let Xscore = ref<number>(0);
-//let Yscore = ref<number>(0);
-
 const checkForWinner = (winnerSymbol: string) => {
   if (!winner.value) {
     if (playerXState.value.x && winnerSymbol === "X") {
