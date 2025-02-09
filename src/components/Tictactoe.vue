@@ -5,6 +5,8 @@ import Gridlist from "./Gridlist.vue";
 import { Player } from "../models/Player";
 import Clearboard from "./Clearboard.vue";
 import Playerform from "./Playerform.vue";
+import xSolid from "/public/x-solid.svg";
+import oSolid from "/public/x-solid.svg";
 
 const boardState = ref<IBoard>({
   gridList: [],
@@ -77,15 +79,15 @@ const gridClick = (id: number, symbol: string) => {
 
     if (playerXState.value.start === 1) {
       if (countState.value % 2 === 1) {
-        symbol = "/public/x-solid.svg";
+        symbol = xSolid;
       } else {
-        symbol = "/public/o-solid.svg";
+        symbol = oSolid;
       }
     } else {
       if (countState.value % 2 === 1) {
-        symbol = "/public/o-solid.svg";
+        symbol = oSolid;
       } else {
-        symbol = "/public/x-solid.svg";
+        symbol = xSolid;
       }
     }
   }
