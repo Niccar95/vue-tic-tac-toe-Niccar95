@@ -77,15 +77,15 @@ const gridClick = (id: number, symbol: string) => {
 
     if (playerXState.value.start === 1) {
       if (countState.value % 2 === 1) {
-        symbol = "/src/assets/x-solid.svg";
+        symbol = "/x-solid.svg";
       } else {
-        symbol = "/src/assets/o-solid.svg";
+        symbol = "/o-solid.svg";
       }
     } else {
       if (countState.value % 2 === 1) {
-        symbol = "/src/assets/o-solid.svg";
+        symbol = "/o-solid.svg";
       } else {
-        symbol = "/src/assets/x-solid.svg";
+        symbol = "/x-solid.svg";
       }
     }
   }
