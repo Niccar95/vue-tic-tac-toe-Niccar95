@@ -6,7 +6,7 @@ import { Player } from "../models/Player";
 import Clearboard from "./Clearboard.vue";
 import Playerform from "./Playerform.vue";
 import xSolid from "/public/x-solid.svg";
-import oSolid from "/public/x-solid.svg";
+import oSolid from "/public/o-solid.svg";
 
 const boardState = ref<IBoard>({
   gridList: [],
