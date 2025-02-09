@@ -3,10 +3,10 @@ import { ref } from "vue";
 import { IBoard } from "../models/IBoard";
 import Gridlist from "./Gridlist.vue";
 import { Player } from "../models/Player";
-import Clearboard from "./Clearboard.vue";
 import Playerform from "./Playerform.vue";
 import xSolid from "/x-solid.svg";
 import oSolid from "/o-solid.svg";
+import Clearboard from "./Clearboard.vue";
 
 const boardState = ref<IBoard>({
   gridList: [],
@@ -80,8 +80,12 @@ const gridClick = (id: number, symbol: string) => {
     if (playerXState.value.start === 1) {
       if (countState.value % 2 === 1) {
         symbol = xSolid;
+
+        console.log(symbol);
       } else {
         symbol = oSolid;
+
+        console.log(symbol);
       }
     } else {
       if (countState.value % 2 === 1) {
@@ -170,17 +174,13 @@ const restartGame = () => {
       class="restartSection"
       v-if="boardState.gridList.every((item) => item.checked) && !winner"
     >
-      <Clearboard
-        :gridList="boardState.gridList"
-        @handleRestart="restartGame"
-      ></Clearboard>
+      <Clearboard :gridList="boardState.gridList" @handleRestart="restartGame">
+      </Clearboard>
     </section>
 
     <section class="restartSection" v-else-if="winner">
-      <Clearboard
-        :gridList="boardState.gridList"
-        @handleRestart="restartGame"
-      ></Clearboard>
+      <Clearboard :gridList="boardState.gridList" @handleRestart="restartGame">
+      </Clearboard>
     </section>
   </section>
 </template>

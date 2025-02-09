@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { IGrid } from "../models/IGrid";
-
 import Grid from "./Grid.vue";
+import xSolid from "/x-solid.svg";
+import oSolid from "/o-solid.svg";
 
 interface IBoard {
   gridList: IGrid[];
@@ -33,17 +34,14 @@ const checkForWin = (): boolean => {
     const grid3 = props.gridList[third];
 
     if (
-      (grid1.symbol === "/src/assets/x-solid.svg" &&
-        grid2.symbol === "/src/assets/x-solid.svg" &&
-        grid3.symbol === "/src/assets/x-solid.svg") ||
-      (grid1.symbol === "/src/assets/o-solid.svg" &&
-        grid2.symbol === "/src/assets/o-solid.svg" &&
-        grid3.symbol === "/src/assets/o-solid.svg")
+      (grid1.symbol === xSolid &&
+        grid2.symbol === xSolid &&
+        grid3.symbol === xSolid) ||
+      (grid1.symbol === oSolid &&
+        grid2.symbol === oSolid &&
+        grid3.symbol === oSolid)
     ) {
-      emit(
-        "handleWinner",
-        grid1.symbol === "/src/assets/x-solid.svg" ? "X" : "O"
-      );
+      emit("handleWinner", grid1.symbol === xSolid ? "X" : "O");
       return true;
     }
   }
