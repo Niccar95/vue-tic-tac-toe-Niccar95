@@ -196,7 +196,7 @@ header {
   
   @media (min-width: 1024px) {
     top: 0;
-    width: 30%;
+    width: 40%;
     height: 80px;
     display: flex;
     align-items: center;
@@ -226,7 +226,7 @@ header {
       position: absolute;
       left: 80px;
 
-      @media (min-width: 1024px) {
+      @media (min-width: 768px) {
         left: 150px;
       }
     }
@@ -235,7 +235,7 @@ header {
       position: absolute;
       right: 80px;
 
-      @media (min-width: 1024px) {
+      @media (min-width: 768px) {
         right: 150px;
       }
     }

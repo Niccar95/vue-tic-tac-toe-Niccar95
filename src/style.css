@@ -14,6 +14,10 @@ body {
   height: 100vh;
   width: 100%;
   overflow-y: auto;
+
+  @media (min-width: 1024px) {
+    gap: 0rem;
+  }
 }
 
 #app {

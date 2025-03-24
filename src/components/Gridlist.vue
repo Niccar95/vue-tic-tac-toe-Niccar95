@@ -72,12 +72,14 @@ const checkForWin = (): boolean => {
   padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   background: linear-gradient(to bottom right, #dd5746, #ffffff, #dd5746);
-  
-  
-  @media (min-width: 1024px) {
+
+
+  @media (min-width: 768px) {
     width: 500px;
     height: 500px;
   }
+  
+ 
 
   div {
     display: flex;
