@@ -35,14 +35,18 @@ const handleSubmit = () => {
 
 <style scoped>
 form {
-  padding: 2em;
+  margin: 2em 0 2em 0;
+  display: flex;
 
   input {
     border: none;
-    width: 250px;
     padding: 1.2em;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     transition: border-color 0.3s, box-shadow 0.3s;
+    
+    @media (min-width: 1024px) {
+      width: 250px;
+  }
   }
 
   input:focus {

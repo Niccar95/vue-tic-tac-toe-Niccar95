@@ -130,8 +130,8 @@ const restartGame = () => {
   <section id="nameContainer">
     <Playerform v-if="playerCount < 2" @addPlayer="addPlayers"></Playerform>
     <section id="nameDisplay">
-      <p class="playerX">Player <b>X</b> : {{ playerXState.name }}</p>
-      <p class="playerO">Player <b>O</b> : {{ playerOState.name }}</p>
+      <p class="playerX"><b>X</b> : {{ playerXState.name }}</p>
+      <p class="playerO"><b>O</b> : {{ playerOState.name }}</p>
     </section>
 
     <section v-if="playerCount === 2">
@@ -188,44 +188,68 @@ const restartGame = () => {
 <style scoped>
 header {
   position: fixed;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30%;
-  height: 80px;
+  background-color: white;
+  z-index: 2;
+  width: 80%;
+  top: 30px;
   border-bottom: solid black 1px;
+  
+  @media (min-width: 1024px) {
+    top: 0;
+    width: 30%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 #nameContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  margin-top: 110px;
   gap: 0.2em;
-  margin-top: 80px;
-  width: 50%;
+  
+  @media (min-width: 1024px) {
+    width: 50%; 
+    margin-top: 80px;
+  }
 
   #nameDisplay {
     position: relative;
     width: 100%;
     height: 30px;
-
+    
     .playerX {
       position: absolute;
-      left: 150px;
+      left: 80px;
+
+      @media (min-width: 1024px) {
+        left: 150px;
+      }
     }
 
     .playerO {
       position: absolute;
-      right: 150px;
+      right: 80px;
+
+      @media (min-width: 1024px) {
+        right: 150px;
+      }
     }
   }
 
   .scoreSection {
-    width: 60%;
+    width: 70%;
     display: flex;
     justify-content: space-around;
     border: solid black 1px;
+
+    @media (min-width: 1024px) {
+        width: 60%;
+      }
   }
 }
 
@@ -239,6 +263,11 @@ header {
 }
 
 .restartSection {
-  padding: 1em;
+  margin-top: 2rem;
+  
+  @media (min-width: 1024px) {
+    margin-top: 1rem;
+  }
 }
+
 </style>

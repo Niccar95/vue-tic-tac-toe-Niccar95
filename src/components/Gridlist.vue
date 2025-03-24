@@ -67,11 +67,17 @@ const checkForWin = (): boolean => {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 5px;
-  height: 500px;
-  width: 500px;
+  width: 100%;
+  height: 370px;
   padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   background: linear-gradient(to bottom right, #dd5746, #ffffff, #dd5746);
+  
+  
+  @media (min-width: 1024px) {
+    width: 500px;
+    height: 500px;
+  }
 
   div {
     display: flex;
